@@ -6,9 +6,28 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="icon" href="/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
-    <div class="main"></div>
+    <div class="main">
+      <nav class="nav">
+        <div class="logo-container">
+          <img src="/logo.png" alt="" />
+        </div>
+        <div class="searchDiv">
+          <input type="search" class="search" placeholder="Search" />
+          <div class="searchBtn">
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div class="mode">
+          <div class="innermode"></div>
+        </div>
+      </nav>
+    </div>
     <script src="/script.js"></script>
   </body>
 </html>
