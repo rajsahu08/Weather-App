@@ -85,3 +85,26 @@ searchBtn.addEventListener("click", async () => {
     console.error(error);
   }
 });
+
+// Thought of the day
+async function findThought() {
+  const urlThought = "https://thought-of-the-day.p.rapidapi.com/thought";
+  const optionsThought = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": "5bae2b20b3mshfa5923da98afd77p138521jsnce7c2c61fc0e",
+      "x-rapidapi-host": "thought-of-the-day.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const thought = await fetch(urlThought, optionsThought);
+    const resultThought = await thought.json();
+    const quote = document.querySelector(".quote");
+    quote.textContent = resultThought.data;
+    console.log(resultThought.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+findThought();
