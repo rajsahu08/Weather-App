@@ -1,3 +1,14 @@
+const placeName = document.querySelector(".placeName");
+const latitude = document.querySelector(".latitude");
+const longitude = document.querySelector(".longitude");
+const temperature = document.querySelector(".temperature");
+const desc = document.querySelector(".desc");
+const feelsliketemp = document.querySelector(".feelsliketemp");
+const wind = document.querySelector(".wind");
+const pressure = document.querySelector(".pressure");
+const humidity = document.querySelector(".humidity");
+const visibility = document.querySelector(".visibility");
+const clouds = document.querySelector(".clouds");
 // Set an interval to update the background image based on the current hour every 60 seconds
 setInterval(() => {
   let currTime = new Date();
@@ -60,30 +71,43 @@ searchBtn.addEventListener("click", async () => {
   };
   try {
     const response = await fetch(url, options);
-    result = await response.text();
-    console.log(result);
+    result = await response.json();
+    placeName.textContent = result.name;
+    longitude.textContent = result.coord.lon;
+    latitude.textContent = result.coord.lat;
+    temperature.textContent = ((result.main.temp - 32) * (5 / 9)).toFixed(2);
+    desc.textContent = result.weather[0].description;
+    feelsliketemp.textContent = (
+      (result.main.feels_like - 32) *
+      (5 / 9)
+    ).toFixed(2);
+    wind.textContent = result.wind.speed;
+    pressure.textContent = result.main.pressure;
+    humidity.textContent = result.main.humidity;
+    visibility.textContent = result.visibility / 1000;
+    clouds.textContent = result.clouds.all;
   } catch (error) {
     console.error(error);
   }
 
   // GET CITY STATE AND COUNTRY
-  const url2 = `https://geodatasource-geodatasource-location-search-web-service-v1.p.rapidapi.com/city/?lng=${latitude}&key=TWNDUWYRVQPIZ3H4TSIRZDQX0LPG3ULU&lat=${longitude}`;
-  const options2 = {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": "5bae2b20b3mshfa5923da98afd77p138521jsnce7c2c61fc0e",
-      "x-rapidapi-host":
-        "geodatasource-geodatasource-location-search-web-service-v1.p.rapidapi.com",
-    },
-  };
+  // const url2 = `https://geodatasource-geodatasource-location-search-web-service-v1.p.rapidapi.com/city/?lng=${latitude}&key=TWNDUWYRVQPIZ3H4TSIRZDQX0LPG3ULU&lat=${longitude}`;
+  // const options2 = {
+  //   method: "GET",
+  //   headers: {
+  //     "x-rapidapi-key": "5bae2b20b3mshfa5923da98afd77p138521jsnce7c2c61fc0e",
+  //     "x-rapidapi-host":
+  //       "geodatasource-geodatasource-location-search-web-service-v1.p.rapidapi.com",
+  //   },
+  // };
 
-  try {
-    const response = await fetch(url2, options2);
-    const result = await response.text();
-    console.log(result);
-  } catch (error) {
-    console.error(error);
-  }
+  // try {
+  //   const response = await fetch(url2, options2);
+  //   const result = await response.text();
+  //   console.log(result);
+  // } catch (error) {
+  //   console.error(error);
+  // }
 });
 
 // Thought of the day
