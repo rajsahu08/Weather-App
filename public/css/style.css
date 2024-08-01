@@ -3,8 +3,8 @@
   padding: 0;
 }
 body {
-  height: 100vh;
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,10 +20,10 @@ body {
 
 .main {
   width: 80%;
-  height: 80%;
   border-radius: 20px;
   background-color: rgba(100, 149, 237, 0.5);
   color: white;
+  margin-top: 30px;
 }
 .nav {
   height: 50px;
@@ -124,7 +124,7 @@ body {
   font-size: 50px;
 }
 .otherInfo {
-  padding-left: 5%;
+  padding:0 5%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -185,6 +185,9 @@ body {
   }
 }
 @media (max-width: 480px) {
+  body{
+    height: auto;
+  }
   .mode {
     display: none;
   }
@@ -206,5 +209,11 @@ body {
   }
   .item {
     width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
   }
 }
